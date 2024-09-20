@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home / Update User Page</title>
+    <style>
+        table {
+            width: 650px;
+            border-top: 7px solid rgb(43, 129, 17);
+            border-collapse: collapse;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #dddddd;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+            border: 3px solid rgb(43, 129, 17);
+        }
+
+        th {
+            text-align: center;
+            padding: 10px;
+            border: 3px solid rgb(43, 129, 17);
+        }
+    </style>
+</head>
+<body>
+<h1>Создание пользователя</h1>
+<form action="#" th:action="@{/users/create}" th:object="${user}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="text" field="*{firstName}" name="firstName" placeholder="first name"></td>
+            <td><input type="text" field="*{lastName}" name="lastName" placeholder="last name"></td>
+            <td><input type="submit" value="Создать"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
