@@ -1,0 +1,75 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home / Update User Page</title>
+    <style>
+        table {
+            width: 650px;
+            border-top: 7px solid rgb(43, 129, 17);
+            border-collapse: collapse;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #dddddd;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+            border: 3px solid rgb(43, 129, 17);
+        }
+
+        th {
+            text-align: center;
+            padding: 10px;
+            border: 3px solid rgb(43, 129, 17);
+        }
+    </style>
+</head>
+<body>
+<h1>Создание пользователя</h1>
+
+<label for="userRole">Выберите роль:</label><br>
+<select id="userRole">
+    <option th:each="role : ${roles}"
+            th:value="${role}"
+            th:text="${role}"
+            th:selected="${role eq 'ROLE_USER'}">
+    </option>
+</select>
+
+    <form id='userCreate' action="#" th:action="@{/create?role=ROLE_USER}" th:object="${user}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Логин</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Пароль</th>
+            <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="text" field="*{username}" name="username" placeholder="login"></td>
+            <td><input type="text" field="*{firstname}" name="firstname" placeholder="first name"></td>
+            <td><input type="text" field="*{lastname}" name="lastname" placeholder="last name"></td>
+            <td><input type="number" field="*{password}" name="password" placeholder="password"></td>
+            <td><input type="submit" value="Создать"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<script>
+    $('#userRole').on('change', function() {
+        let value = $(this).val();
+        $('#userCreate').attr('action', '/create?role=' + value);
+    })
+</script>
+</body>
+</html>
