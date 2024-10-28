@@ -1,0 +1,25 @@
+server:
+  port: 8765
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: Cart
+          uri: http://localhost:8081
+          predicates:
+            - Path=/cart/**
+        - id: Reviews
+          uri: http://localhost:8082
+          predicates:
+            - Path=/reviews/**
+        - id: Store
+          uri: http://localhost:8083
+          predicates:
+            - Path=/store/**
+        - id: Users-rest
+          uri: http://localhost:8086
+          predicates:
+            - Path=/users/**

@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          review:
+            url: http://localhost:8765/review
+            connect-timeout: 5000
+            read-timeout: 5000
+          cart:
+            url: http://localhost:8765/cart
+            connect-timeout: 5000
+            read-timeout: 5000
+          users:
+            url: http://localhost:8765/users
+            connect-timeout: 5000
+            read-timeout: 500
+          store:
+            url: http://localhost:8765/store
+            connect-timeout: 5000
+            read-timeout: 5000
+          hello:
+            url: http://localhost:8765/users
+            connect-timeout: 5000
+            read-timeout: 5000
