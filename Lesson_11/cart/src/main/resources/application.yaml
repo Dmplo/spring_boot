@@ -1,0 +1,28 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: Cart
+  cloud:
+    openfeign:
+      client:
+        config:
+          product:
+            url: http://localhost:8765/store
+            connect-timeout: 5000
+            read-timeout: 5000
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/poly_db
+    username: myuser
+    password: mypassword
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
